@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轻松上手 · 比分网使用指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #faf7f2;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2e2b27;
+            padding: 0 20px;
+        }
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2rem 0 3.5rem;
+        }
+
+        /* 导航 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0 0.8rem;
+            border-bottom: 1px solid #e2d9cf;
+            margin-bottom: 2.8rem;
+            flex-wrap: wrap;
+            gap: 1rem 0.5rem;
+        }
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            color: #5b4f43;
+            border-left: 4px solid #c4a88c;
+            padding-left: 14px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #5f5549;
+            transition: color 0.2s;
+            font-weight: 450;
+        }
+        .nav-links a:hover {
+            color: #a17c5c;
+        }
+
+        /* hero */
+        .hero {
+            background: #fffcf8;
+            border-radius: 28px;
+            padding: 2.8rem 2.4rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02), 0 1px 4px rgba(90,70,50,0.04);
+            border: 1px solid #ede5db;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            color: #3d352e;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #6b5f53;
+            max-width: 620px;
+            margin-bottom: 1.4rem;
+        }
+        .hero .remark {
+            background: #f2ede6;
+            padding: 1rem 1.5rem;
+            border-radius: 40px 20px 20px 40px;
+            display: inline-block;
+            font-size: 0.95rem;
+            color: #4d4239;
+            border-left: 4px solid #b99b7e;
+        }
+        .hero .remark i {
+            font-style: normal;
+            background: #ddcebd;
+            padding: 0.15rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #3f362d;
+            margin-right: 6px;
+        }
+
+        /* 卡片三场景 */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 2.5rem 0 2rem;
+        }
+        .scene-card {
+            background: #ffffffef;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid #e8dfd4;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(90, 70, 45, 0.06);
+        }
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 530;
+            margin-bottom: 0.5rem;
+            color: #4c4036;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #5a4f44;
+        }
+        .card-icon {
+            background: #ebe0d3;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #5a4b39;
+        }
+
+        /* 说明区 (常见说明) */
+        .faq-box {
+            background: #fffcf8;
+            border-radius: 26px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0;
+            border: 1px solid #e7ddd2;
+        }
+        .faq-box h2 {
+            font-size: 1.5rem;
+            font-weight: 520;
+            color: #3d352e;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e2d6c9;
+            padding-bottom: 0.5rem;
+        }
+        .faq-item {
+            margin-bottom: 1.1rem;
+        }
+        .faq-item strong {
+            color: #4f4339;
+            font-weight: 550;
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.96rem;
+        }
+        .faq-item p {
+            color: #5b5045;
+            font-size: 0.92rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid #dacabe;
+        }
+
+        /* 提示框 / 引用块 */
+        .tip-block {
+            background: #f3ede5;
+            border-left: 5px solid #b99979;
+            padding: 1.2rem 1.8rem;
+            border-radius: 30px 12px 12px 30px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: #464034;
+        }
+        .tip-block a {
+            color: #7d6b58;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cbb7a3;
+        }
+        .tip-block a:hover {
+            color: #a67b58;
+        }
+
+        /* 文章排版内嵌链接 */
+        .inline-link {
+            color: #7d6b58;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cbb7a3;
+            font-weight: 450;
+            transition: color 0.15s;
+        }
+        .inline-link:hover {
+            color: #a4754e;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e1d6cb;
+            font-size: 0.85rem;
+            color: #786c5f;
+            text-align: center;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 1.8rem 1.4rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .faq-box {
+                padding: 1.4rem 1.2rem;
+            }
+            .scenes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <span class="nav-logo">⚡ 简明指南</span>
+        <div class="nav-links">
+            <a href="#guide">使用说明</a>
+            <a href="#scenes">常见场景</a>
+            <a href="#faq">小问答</a>
+        </div>
+    </nav>
+
+    <!-- hero 介绍 -->
+    <div class="hero">
+        <h1>比分信息 · 轻松看</h1>
+        <div class="sub">
+            每天花几分钟扫一眼比分，心里就有数。无论是联赛、杯赛还是友谊赛，不用绕弯子。
+        </div>
+        <div class="remark">
+            <i>📌 生活提醒</i> 把 <a href="https://webs-scores.com" class="inline-link">比分网</a> 当作一个顺手工具，像看天气预报一样自然。
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 style="font-weight:530; color:#4c4036; margin-bottom:0.3rem; font-size:1.3rem;">🏀 三种常见使用场景</h2>
+    <p style="color:#6b5f53; margin-bottom:0.2rem; font-size:0.95rem;">以下场景或许能帮你更快找到想要的比分信息。</p>
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3><span class="card-icon">⚽</span> 赛前瞄一眼</h3>
+            <p>出门前或午休时快速浏览即将开始的场次，对实力差距和近期走势有个大致印象。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span class="card-icon">📊</span> 实时追踪</h3>
+            <p>比赛进行中不方便看直播？文字节奏刚好——进球、红牌、换人，重点变化一目了然。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span class="card-icon">📅</span> 赛后补课</h3>
+            <p>错过比赛？翻一下完整赛果和简单统计，补上聊天时的话题素材，不费劲。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 / 访问提醒 -->
+    <div class="tip-block">
+        <strong style="display:block; font-weight:540; margin-bottom:4px;">🧭 一点小提示</strong>
+        直接使用 <a href="https://webs-scores.com">比分网</a> 时，留意页面顶部筛选栏，可以按联赛或日期收窄范围。移动端同样顺手，不必特意切换设备。
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="faq-box" id="faq">
+        <h2>常见说明 · 快速了解</h2>
+        <div class="faq-item">
+            <strong>页面上的时间是什么时区？</strong>
+            <p>通常显示为北京/台北时间（UTC+8），少数国际赛事会标注当地时，注意区分即可。</p>
+        </div>
+        <div class="faq-item">
+            <strong>为什么有时比分更新偏慢？</strong>
+            <p>数据来自官方统计渠道，偶尔会有几十秒延迟，尤其关注度较低的赛事。可以刷新页面或等一两分钟。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否包含历史对阵数据？</strong>
+            <p>大部分联赛提供近期交锋记录和积分排名，方便做简单对比。更详尽的历史统计建议搭配其他专业工具。</p>
+        </div>
+        <div class="faq-item">
+            <strong>需要注册或登录吗？</strong>
+            <p>完全不需要。直接打开 <a href="https://webs-scores.com" class="inline-link">比分网</a> 就能浏览所有公开信息，没有任何门槛。</p>
+        </div>
+    </div>
+
+    <!-- 一段自然的内容段落 + 链接嵌入 -->
+    <p style="margin: 2rem 0 0.2rem; font-size:0.96rem; color:#4f463d;">
+        如果你平时主要关注欧洲五大联赛或者国内赛事，<a href="https://webs-scores.com" class="inline-link">比分网</a> 的首页默认展示热门场次，基本覆盖主流需求。 
+        对于小众联赛，可以通过搜索或侧边分类找到对应入口。界面没有花哨的广告弹窗，整体比较清爽。
+    </p>
+
+    <footer class="footer">
+        <span>一份安静实用的比分参考 &bull; 使用中如有疑问可刷新重试</span>
+    </footer>
+</div>
+</body>
+</html>

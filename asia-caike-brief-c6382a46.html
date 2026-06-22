@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>竞彩网 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f2f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* —— hero 区域 —— */
+    .hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1f2a3a;
+      border-left: 4px solid #2b6f9f;
+      padding-left: 1.2rem;
+    }
+
+    .hero .sub {
+      margin-top: 0.75rem;
+      color: #4a5b6e;
+      font-size: 1rem;
+      max-width: 680px;
+      padding-left: 1.6rem;
+      border-left: 1px solid #d0d9e3;
+    }
+
+    /* —— 卡片网格：目录感布局 —— */
+    .section-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #697e94;
+      margin: 2.2rem 0 1rem 0;
+      border-bottom: 1px solid #d9e0e8;
+      padding-bottom: 0.4rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3e9f0;
+      border-radius: 14px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 20, 30, 0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(31, 41, 55, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1f384b;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px dashed #e4ebf2;
+      padding-bottom: 0.35rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #2c4055;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #6b8ea8;
+      font-weight: 700;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3f8;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #2f5d7a;
+      margin-right: 0.4rem;
+    }
+
+    /* —— 提示区 —— */
+    .notice-area {
+      margin: 2.2rem 0;
+      background: #f7faff;
+      border: 1px solid #dbe4ee;
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .notice-area h4 {
+      font-weight: 500;
+      color: #2a4e6b;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .notice-area p {
+      color: #2c3f57;
+      margin-bottom: 0.3rem;
+    }
+
+    .notice-area a {
+      color: #1f6290;
+      text-decoration: none;
+      border-bottom: 1px dotted #8eaec9;
+    }
+
+    .notice-area a:hover {
+      border-bottom: 1px solid #1f6290;
+    }
+
+    /* —— 相关信息区 —— */
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-box {
+      background: #ffffff;
+      border: 1px solid #e3e9f0;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .related-box h4 {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #335a78;
+      margin-bottom: 0.4rem;
+    }
+
+    .related-box p, .related-box small {
+      color: #3d556d;
+      font-size: 0.9rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1f3a50;
+    }
+
+    .hr-light {
+      margin: 2.2rem 0 1rem;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #cfdae6, transparent);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #6c7f95;
+      border-top: 1px solid #dce3ec;
+      padding-top: 1.5rem;
+      text-align: left;
+    }
+
+    footer a {
+      color: #3d637f;
+      text-decoration: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 720px) {
+      body { padding: 1.4rem 1rem; }
+      .hero h1 { font-size: 1.7rem; padding-left: 1rem; }
+      .grid-2col, .related-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .card, .related-box { padding: 1.2rem; }
+      .notice-area { padding: 1rem; }
+    }
+
+    @media (max-width: 460px) {
+      .hero h1 { font-size: 1.4rem; }
+      .card p, .card li { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- hero 与说明 -->
+  <div class="hero">
+    <h1>竞彩信息 · 内容库</h1>
+    <div class="sub">
+      一个围绕竞彩网构建的轻量知识入口，提供赛事分类、规则说明与使用指引。
+      页面保持克制，仅整合公开可参考的内容框架。
+    </div>
+  </div>
+
+  <!-- 目录感卡片区：特点与场景 -->
+  <div class="section-label">▎ 结构目录</div>
+  <div class="grid-2col">
+
+    <div class="card">
+      <h3>⚙️ 功能特点</h3>
+      <ul>
+        <li>赛事类型覆盖：足球、篮球及部分单项</li>
+        <li>赔率变动与固定奖金参照</li>
+        <li>过关方式展示：串关、单关等基本组合</li>
+        <li>数据更新节奏说明（赛前、赛中）</li>
+        <li>页面结构稳定，适合信息回顾</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📘 适用场景</h3>
+      <ul>
+        <li>赛前查阅基础对阵与选项</li>
+        <li>了解竞彩玩法基本分类</li>
+        <li>对照规则与奖金计算方式</li>
+        <li>作为内容索引，配合其他数据页面使用</li>
+        <li>新用户理解竞彩概念框架</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- 提示区：稳定入口说明 -->
+  <div class="notice-area">
+    <h4>📌 稳定访问入口</h4>
+    <p>
+      本页面为静态入口，不提供实时下注或结算功能。如需浏览完整竞彩选项、赔率及赛事列表，
+      可直接访问 <a href="https://asia-caike.com" target="_blank" rel="noopener">竞彩网</a>。
+      该站点为信息聚合页面，赛前数据通常于每天上午更新。
+    </p>
+    <p style="margin-top:0.4rem;">
+      建议在访问前确认网络环境，部分内容可能需要 cookies 支持以保证页面正常显示。
+    </p>
+  </div>
+
+  <!-- 相关信息区：FAQ摘要 + 细节点 -->
+  <div class="section-label">▎ 相关信息</div>
+  <div class="related-grid">
+
+    <div class="related-box">
+      <h4>❓ 常见问题摘要</h4>
+      <div class="faq-item">
+        <strong>竞彩玩法有哪些基本类型？</strong>
+        <p>胜平负、让球胜平负、比分、总进球数、半全场等。每场赛事会标注对应玩法选项。</p>
+      </div>
+      <div class="faq-item">
+        <strong>奖金如何参考？</strong>
+        <p>固定奖金以出票时刻为准，页面显示的赔率为参考值，实际奖金以票面打印为准。</p>
+      </div>
+      <div class="faq-item">
+        <strong>过关串关能否混合玩法？</strong>
+        <p>部分赛事支持混合过关，但需要同一场比赛的不同玩法不可混串，具体以页面规则区说明为准。</p>
+      </div>
+    </div>
+
+    <div class="related-box">
+      <h4>📎 页面使用提示</h4>
+      <p>• 本入口页不存储个人数据，仅为内容导航。<br>
+         • 赛事信息可能延迟，最终以官方发布为准。<br>
+         • 过关奖金计算可使用页面内置计算器（部分页面提供）。<br>
+         • 推荐使用最新版 Chrome、Edge 或 Safari 浏览。<br>
+         • 如遇显示异常，可尝试清除缓存后重载。
+      </p>
+      <p style="margin-top: 0.6rem;">
+        <span class="tag">稳定版</span>
+        <span class="tag">内容索引</span>
+        <span class="tag">规则参考</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- 一段补充叙述：克制且自然 -->
+  <hr class="hr-light">
+  <div style="background: #ffffff; border-radius: 12px; padding: 1.2rem 1.5rem; border:1px solid #e3e9f0; box-shadow: 0 1px 4px rgba(0,0,0,0.02);">
+    <p style="color: #2c4055;">
+      这个页面更像一个安静的起始点。如果你本来就在寻找竞彩相关的内容框架，这里或许能帮你快速定位。
+      所有描述只作为知识索引，不构成投注建议。任何决策请以 <a href="https://asia-caike.com" target="_blank" rel="noopener">竞彩网</a> 
+      页面上的实时数据与官方规则为准。
+    </p>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <p>知识库入口 · 内容方向为赛事信息索引 · 页面版本 2025</p>
+    <p style="margin-top: 0.3rem;">竞彩相关参考 · 站点：<a href="https://asia-caike.com" target="_blank" rel="noopener">竞彩网</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
